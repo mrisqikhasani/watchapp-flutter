@@ -22,8 +22,8 @@ class _RecommendSectionState extends State<RecommendSection> {
           'Recommend For You',
           style: TextStyle(
             color: Color(0xfff9f8ff),
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            fontWeight: FontWeight.w600
           ),
         ),
 
@@ -142,7 +142,7 @@ class _RecommendSectionState extends State<RecommendSection> {
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 4),

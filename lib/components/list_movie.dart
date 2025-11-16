@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:watchapp/detail_page.dart';
 import 'package:watchapp/directory/model/movie_list_model.dart';
 
 class ListMovie extends StatelessWidget {
@@ -12,7 +13,7 @@ class ListMovie extends StatelessWidget {
           style: TextStyle(
             color: Color(0xfff9f8ff),
             fontSize: 22,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
         ),
 
@@ -28,16 +29,20 @@ class ListMovie extends StatelessWidget {
             mainAxisSpacing: 20,
           ),
           children: recommendForYou
-              .map((movie) => _buildMovieCard(movie))
+              .map((movie) => _buildMovieCard(context, movie))
               .toList(),
         ),
       ],
     );
   }
 
-  Widget _buildMovieCard(MovieListModel movie) {
-  return GestureDetector(
-    onTap: () {},
+  Widget _buildMovieCard(BuildContext context, MovieListModel movie) {
+  return InkWell(
+    onTap: () {
+      Navigator.push(
+        context, MaterialPageRoute(builder: (_) => DetailPage(movie: movie))
+      );
+    },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -82,7 +87,7 @@ class ListMovie extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.65),
+                    color: Colors.black.withValues(alpha: 0.65),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -107,14 +112,13 @@ class ListMovie extends StatelessWidget {
 
         SizedBox(height: 8),
 
-        // Movie Title (Under Poster)
         Text(
           "${movie.title} (${movie.year})",
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: Color(0xfff9f8ff),
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             fontSize: 14,
             height: 1.1,
           ),

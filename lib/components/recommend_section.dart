@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:watchapp/directory/model/movie_list_model.dart';
+import 'package:watchapp/detail_page.dart';
 
 class RecommendSection extends StatefulWidget {
   const RecommendSection({Key? key}) : super(key: key);
@@ -66,7 +67,17 @@ class _RecommendSectionState extends State<RecommendSection> {
   }
 
   Widget _buildMovieCard(MovieListModel movie) {
-    return Container(
+  return InkWell(
+    borderRadius: BorderRadius.circular(20),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => DetailPage(movie: movie),
+        ),
+      );
+    },
+    child: Container(
       width: 320,
       margin: const EdgeInsets.only(right: 16),
       child: ClipRRect(
@@ -96,10 +107,7 @@ class _RecommendSectionState extends State<RecommendSection> {
               top: 10,
               left: 10,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: Colors.redAccent,
                   borderRadius: BorderRadius.circular(12),
@@ -173,6 +181,8 @@ class _RecommendSectionState extends State<RecommendSection> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

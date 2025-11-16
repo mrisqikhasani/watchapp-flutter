@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:watchapp/detail_page.dart';
 import 'package:watchapp/home_page.dart';
 
 void main() {
@@ -6,13 +7,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
- const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
- @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Watch App',
-      theme: ThemeData(),
+      theme: ThemeData(fontFamily: 'Poppins'),
       home: HomePage(),
     );
   }

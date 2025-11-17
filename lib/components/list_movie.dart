@@ -34,7 +34,7 @@ class ListMovie extends StatelessWidget {
             SizedBox(height: 12),
 
             GridView.builder(
-              itemCount: recommendForYou.length,
+              itemCount: movieTrending.length,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -44,7 +44,7 @@ class ListMovie extends StatelessWidget {
                 mainAxisSpacing: 20,
               ),
               itemBuilder: (context, index) {
-                final movie = recommendForYou[index];
+                final movie = movieTrending[index];
                 return _buildMovieCard(context, movie);
               },
             ),

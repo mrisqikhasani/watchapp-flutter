@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeAppBarComponents extends StatelessWidget
-    implements PreferredSizeWidget {
+class HomeAppBarComponents extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
@@ -12,9 +11,9 @@ class HomeAppBarComponents extends StatelessWidget
         child: Row(
           children: [
             CircleAvatar(
-              radius: 28, 
+              radius: 28,
               backgroundColor: Colors.redAccent,
-              backgroundImage: NetworkImage('https://assets.pikiran-rakyat.com/crop/0x0:0x0/720x0/webp/photo/2025/02/25/2935691421.jpg'),
+              backgroundImage: AssetImage('image/jiwooH2H.jpg'),
             ),
             SizedBox(width: 12),
 
@@ -26,15 +25,15 @@ class HomeAppBarComponents extends StatelessWidget
                   Text(
                     'Hi, Python',
                     style: TextStyle(
-                      color: Colors.lightBlue,
+                      color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     "@PythonGas",
-                    style: TextStyle(color: Colors.amber, fontSize: 14),
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -47,12 +46,11 @@ class HomeAppBarComponents extends StatelessWidget
               color: Colors.transparent,
               child: InkWell(
                 borderRadius: BorderRadius.circular(50),
-                onTap: () {
-                },
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
+                    color: Colors.grey.withValues(alpha: 0.2),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(Icons.settings, color: Colors.white),

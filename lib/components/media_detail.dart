@@ -4,7 +4,7 @@ import 'package:watchapp/directory/model/movie_list_model.dart';
 class MediaDetail extends StatelessWidget {
   final MovieListModel movie;
 
-  const MediaDetail({Key? key, required this.movie}) : super(key: key);
+  const MediaDetail({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:watchapp/directory/model/movie_list_model.dart';
 class HighlightDetail extends StatelessWidget {
   final MovieListModel movie;
 
-  const HighlightDetail({Key? key, required this.movie}) : super(key: key);
+  const HighlightDetail({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -70,12 +70,12 @@ class HighlightDetail extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(23),
             image: DecorationImage(
-              image: NetworkImage(movie.posterImagePotrait!),
+              image: NetworkImage(movie.posterImagePotrait),
               fit: BoxFit.cover,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.red.withOpacity(0.25),
+                color: Colors.red.withValues(alpha: 0.25),
                 blurRadius: 25,
                 spreadRadius: 2,
                 offset: const Offset(0, 6),
@@ -161,7 +161,7 @@ class HighlightDetail extends StatelessWidget {
       child: Text(
         movie.description,
         style: TextStyle(
-          color: Colors.white.withOpacity(0.9),
+          color: Colors.white.withValues(alpha: 0.9),
           fontSize: fontSize,
           height: 1.4,
         ),

@@ -7,7 +7,7 @@ import 'package:watchapp/directory/model/movie_list_model.dart';
 class DetailPage extends StatelessWidget {
   final MovieListModel movie;
 
-  const DetailPage({Key? key, required this.movie}) : super(key: key);
+  const DetailPage({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class DetailPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Back Button
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
@@ -59,13 +58,13 @@ class DetailPage extends StatelessWidget {
 }
 
 class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key}) : super(key: key);
+  const FavoriteButton({super.key});
 
   @override
-  _FavoriteButtonState createState() => _FavoriteButtonState();
+  FavoriteButtonState createState() => FavoriteButtonState();
 }
 
-class _FavoriteButtonState extends State<FavoriteButton> {
+class FavoriteButtonState extends State<FavoriteButton> {
   bool isFavorite = false;
 
   @override
@@ -81,7 +80,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         duration: const Duration(milliseconds: 250),
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
-          color: isFavorite ? Colors.red.withOpacity(.25) : Colors.red,
+          color: isFavorite ? Colors.red.withValues(alpha: 0.25) : Colors.red,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
@@ -105,13 +104,13 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
 
 class WatchListButton extends StatefulWidget {
-  const WatchListButton({Key? key}) : super(key: key);
+  const WatchListButton({super.key});
 
   @override
-  _WatchListButtonState createState() => _WatchListButtonState();
+  WatchListButtonState createState() => WatchListButtonState();
 }
 
-class _WatchListButtonState extends State<WatchListButton> {
+class WatchListButtonState extends State<WatchListButton> {
   bool isAdded = false;
 
   @override
@@ -127,7 +126,7 @@ class _WatchListButtonState extends State<WatchListButton> {
         duration: const Duration(milliseconds: 250),
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
-          color: isAdded ? Colors.green.withOpacity(.25) : Colors.white10,
+          color: isAdded ? Colors.green.withValues(alpha: 0.25) : Colors.white10,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isAdded ? Colors.greenAccent : Colors.transparent,

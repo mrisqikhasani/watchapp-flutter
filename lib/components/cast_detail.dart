@@ -4,7 +4,7 @@ import 'package:watchapp/directory/model/movie_list_model.dart';
 class CastDetail extends StatelessWidget {
   final MovieListModel movie;
 
-  const CastDetail({Key? key, required this.movie}) : super(key: key);
+  const CastDetail({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class CastDetail extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _photo(cast.imageurlCast!, size: 60),
+              _photo(cast.imageurlCast, size: 60),
               const SizedBox(width: 12),
               Expanded(
                 child: _textInfo(cast.name, cast.character, TextAlign.left),
@@ -79,7 +79,7 @@ class CastDetail extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _photo(cast.imageurlCast!, size: 100),
+              _photo(cast.imageurlCast, size: 100),
               const SizedBox(height: 8),
               _textInfo(cast.name, cast.character, TextAlign.center),
             ],
@@ -116,7 +116,7 @@ class CastDetail extends StatelessWidget {
           textAlign: align,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontSize: 13, color: Colors.white.withOpacity(.75)),
+          style: TextStyle(fontSize: 13, color: Colors.white.withValues(alpha: 0.75)),
         ),
       ],
     );

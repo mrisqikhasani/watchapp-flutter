@@ -3,7 +3,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:watchapp/directory/model/movie_list_model.dart';
 import 'package:watchapp/detail_page.dart';
 
-
 class RecommendSection extends StatelessWidget {
   const RecommendSection({super.key});
 
@@ -21,16 +20,21 @@ class RecommendSection extends StatelessWidget {
   }
 }
 
-
 class RecommendSectionMobile extends StatefulWidget {
-  const RecommendSectionMobile({Key? key}) : super(key: key);
+  const RecommendSectionMobile({super.key});
 
   @override
-  State<RecommendSectionMobile> createState() => _RecommendSectionMobileState();
+  State<RecommendSectionMobile> createState() => RecommendSectionMobileState();
 }
 
-class _RecommendSectionMobileState extends State<RecommendSectionMobile> {
+class RecommendSectionMobileState extends State<RecommendSectionMobile> {
   final PageController _controller = PageController(viewportFraction: 0.85);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +97,7 @@ class _RecommendSectionMobileState extends State<RecommendSectionMobile> {
             children: [
               Positioned.fill(
                 child: Image.network(
-                  movie.posterImageLandscape!,
+                  movie.posterImageLandscape,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -199,21 +203,26 @@ class _RecommendSectionMobileState extends State<RecommendSectionMobile> {
   }
 }
 
-
 class RecommendSectionWeb extends StatefulWidget {
   const RecommendSectionWeb({super.key});
 
   @override
-  State<RecommendSectionWeb> createState() => _RecommendSectionWebState();
+  State<RecommendSectionWeb> createState() => RecommendSectionWebState();
 }
 
-class _RecommendSectionWebState extends State<RecommendSectionWeb> {
+class RecommendSectionWebState extends State<RecommendSectionWeb> {
   late final PageController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = PageController(viewportFraction: 0.55);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -271,7 +280,7 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withValues(alpha: 0.4),
               blurRadius: 18,
               offset: const Offset(0, 8),
             ),
@@ -282,7 +291,10 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
           child: Stack(
             children: [
               Positioned.fill(
-                child: Image.network(movie.posterImageLandscape!, fit: BoxFit.cover),
+                child: Image.network(
+                  movie.posterImageLandscape,
+                  fit: BoxFit.cover,
+                ),
               ),
 
               Positioned.fill(
@@ -292,7 +304,7 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: [
-                        Colors.black.withOpacity(0.75),
+                        Colors.black.withValues(alpha: 0.75),
                         Colors.transparent,
                       ],
                     ),
@@ -304,7 +316,10 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
                 top: 14,
                 left: 14,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.redAccent,
                     borderRadius: BorderRadius.circular(12),
@@ -345,7 +360,7 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
                           Text(
                             "${movie.genre} • ${movie.year}",
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.85),
+                              color: Colors.white.withValues(alpha: 0.85),
                               fontSize: 15,
                             ),
                           ),
@@ -354,7 +369,11 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
                     ),
                     Row(
                       children: [
-                        const Icon(Icons.star, color: Colors.yellowAccent, size: 26),
+                        const Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 26,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           movie.rating.toString(),
@@ -376,5 +395,3 @@ class _RecommendSectionWebState extends State<RecommendSectionWeb> {
     );
   }
 }
-
-

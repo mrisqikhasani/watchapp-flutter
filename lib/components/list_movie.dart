@@ -3,6 +3,8 @@ import 'package:watchapp/detail_page.dart';
 import 'package:watchapp/directory/model/movie_list_model.dart';
 
 class ListMovie extends StatelessWidget {
+  const ListMovie({super.key});
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -76,7 +78,7 @@ class ListMovie extends StatelessWidget {
                 AspectRatio(
                   aspectRatio: 3 / 4,
                   child: Image.network(
-                    movie.posterImagePotrait!,
+                    movie.posterImagePotrait,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -109,7 +111,7 @@ class ListMovie extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.65),
+                      color: Colors.black.withValues(alpha: 0.65),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(

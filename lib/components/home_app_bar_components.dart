@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeAppBarComponents extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppBarComponents extends StatelessWidget
+    implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
@@ -33,7 +34,10 @@ class HomeAppBarComponents extends StatelessWidget implements PreferredSizeWidge
                   ),
                   Text(
                     "@PythonGas",
-                    style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 12),
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.8),
+                      fontSize: 12,
+                    ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -46,7 +50,22 @@ class HomeAppBarComponents extends StatelessWidget implements PreferredSizeWidge
               color: Colors.transparent,
               child: InkWell(
                 borderRadius: BorderRadius.circular(50),
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Coming Soon...",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      duration: Duration(seconds: 2),
+                      behavior: SnackBarBehavior.floating,
+                      margin: EdgeInsets.all(14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  );
+                },
                 child: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(

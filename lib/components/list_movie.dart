@@ -10,13 +10,15 @@ class ListMovie extends StatelessWidget {
         int crossAxisCount;
 
         if (constraints.maxWidth >= 1200) {
-          crossAxisCount = 6; 
+          crossAxisCount = 6;
         } else if (constraints.maxWidth >= 900) {
-          crossAxisCount = 5; 
+          crossAxisCount = 5;
         } else if (constraints.maxWidth >= 600) {
-          crossAxisCount = 3; 
-        } else {
+          crossAxisCount = 3;
+        } else if (constraints.maxWidth >= 390){
           crossAxisCount = 2;
+        } else {
+          crossAxisCount = 1;
         }
 
         return Column(
@@ -39,7 +41,7 @@ class ListMovie extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: crossAxisCount,
-                childAspectRatio: 3 / 5,
+                childAspectRatio: 3 / 6, // FIX: tambahin tinggi biar muat text
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 20,
               ),
@@ -57,11 +59,14 @@ class ListMovie extends StatelessWidget {
   Widget _buildMovieCard(BuildContext context, MovieListModel movie) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (_) => DetailPage(movie: movie)));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => DetailPage(movie: movie)),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Poster + badges
           ClipRRect(
@@ -148,10 +153,7 @@ class ListMovie extends StatelessWidget {
             movie.genre,
             maxLines: 1,
             overflow: TextOverflow.fade,
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 11,
-            ),
+            style: TextStyle(color: Colors.white70, fontSize: 11),
           ),
         ],
       ),
